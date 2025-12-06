@@ -17,5 +17,6 @@
   },
   "webUI": {
     "port": 9999
-  }
+  },
+  "xiaozhiServerUrl": ""
 }

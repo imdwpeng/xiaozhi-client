@@ -43,6 +43,7 @@ const formSchema = z.object({
       message: "重连间隔不能小于1000毫秒",
     }),
   }),
+  xiaozhiServerUrl: z.string().optional(),
 });
 
 export default function SettingsPage() {
@@ -65,6 +66,7 @@ export default function SettingsPage() {
         heartbeatTimeout: config?.connection?.heartbeatTimeout || 10000,
         reconnectInterval: config?.connection?.reconnectInterval || 5000,
       },
+      xiaozhiServerUrl: config?.xiaozhiServerUrl || "",
     },
   });
 
@@ -77,6 +79,12 @@ export default function SettingsPage() {
         heartbeatInterval: config?.connection?.heartbeatInterval || 30000,
         heartbeatTimeout: config?.connection?.heartbeatTimeout || 10000,
         reconnectInterval: config?.connection?.reconnectInterval || 5000,
+      },
+      xiaozhiServerUrl: config?.xiaozhiServerUrl || "",
+      platforms: {
+        coze: {
+          token: config?.platforms?.coze?.token || "",
+        },
       },
     });
   }, [config, form.reset]);
@@ -106,6 +114,7 @@ export default function SettingsPage() {
             token: values.platforms.coze.token,
           },
         },
+        xiaozhiServerUrl: values.xiaozhiServerUrl,
       };
 
       await updateConfig(newConfig);
@@ -198,13 +207,45 @@ export default function SettingsPage() {
                                       );
                                     }}
                                   >
-                                    打开扣子平台
-                                  </Button>
-                                </div>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
+                            打开扣子平台
+                          </Button>
+                        </div>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="xiaozhiServerUrl"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>小智服务端链接</FormLabel>
+                        <div className="flex gap-2">
+                          <FormControl>
+                            <Input
+                              placeholder="小智服务端链接"
+                              className="font-mono text-sm"
+                              disabled={isLoading}
+                              autoComplete="off"
+                              {...field}
+                            />
+                          </FormControl>
+                          <Button
+                            variant="outline"
+                            onClick={() => {
+                              window.open(
+                                field.value || "https://www.example.com",
+                                "_blank"
+                              );
+                            }}
+                          >
+                            打开小智服务端
+                          </Button>
+                        </div>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
                           <FormField
                             control={form.control}
                             name="connection.heartbeatInterval"

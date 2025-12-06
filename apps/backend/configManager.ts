@@ -218,6 +218,7 @@ export interface AppConfig {
   webUI?: WebUIConfig; // Web UI 配置（可选）
   platforms?: PlatformsConfig; // 平台配置（可选）
   toolCallLog?: ToolCallLogConfig; // 工具调用日志配置（可选）
+  xiaozhiServerUrl?: string; // 小智服务端链接配置（可选）
 }
 
 /**
@@ -1647,6 +1648,23 @@ export class ConfigManager {
   public getWebUIPort(): number {
     const webUIConfig = this.getWebUIConfig();
     return webUIConfig.port ?? 9999; // 默认端口 9999
+  }
+
+  /**
+   * 获取小智服务端链接配置
+   */
+  public getXiaozhiServerUrl(): string | undefined {
+    const config = this.getConfig();
+    return config.xiaozhiServerUrl;
+  }
+
+  /**
+   * 更新小智服务端链接配置
+   */
+  public updateXiaozhiServerUrl(xiaozhiServerUrl: string | undefined): void {
+    const config = this.getMutableConfig();
+    config.xiaozhiServerUrl = xiaozhiServerUrl;
+    this.saveConfig(config);
   }
 
   /**

@@ -82,6 +82,11 @@ export class ConfigService {
         configManager.updateWebUIConfig(newConfig.webUI);
       }
 
+      // 更新小智服务端链接配置
+      if (newConfig.xiaozhiServerUrl !== undefined) {
+        configManager.updateXiaozhiServerUrl(newConfig.xiaozhiServerUrl);
+      }
+
       // 更新服务工具配置
       if (newConfig.mcpServerConfig) {
         for (const [serverName, toolsConfig] of Object.entries(

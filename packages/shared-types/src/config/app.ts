@@ -73,6 +73,7 @@ export interface AppConfig {
   modelscope?: ModelScopeConfig;
   webUI?: WebUIConfig;
   platforms?: PlatformsConfig;
+  xiaozhiServerUrl?: string; // 小智服务端链接配置（可选）
 }
 
 /**
