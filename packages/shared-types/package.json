@@ -48,7 +48,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/shenjingnan/xiaozhi-client.git",
+    "url": "https://github.com/imdwpeng/xiaozhi-client.git",
     "directory": "packages/shared-types"
   },
   "keywords": [

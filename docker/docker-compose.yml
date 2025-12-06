@@ -1,6 +1,6 @@
 services:
   xiaozhi-client:
-    image: shenjingnan/xiaozhi-client:latest
+    image: imdwpeng/xiaozhi-client:latest
     container_name: xiaozhi-client
     restart: unless-stopped
 

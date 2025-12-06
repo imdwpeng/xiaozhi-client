@@ -4,7 +4,7 @@
   "type": "module",
   "description": "",
   "keywords": [],
-  "author": "shenjingnan <sjn.code@gmail.com>",
+  "author": "imdwpeng <sjn.code@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.12.1",

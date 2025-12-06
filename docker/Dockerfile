@@ -28,7 +28,7 @@ RUN apt-get update && apt-get install -y \
     python3-venv \
     && rm -rf /var/lib/apt/lists/* \
     && ln -sf /usr/bin/python3 /usr/bin/python \
-    && npm install -g pnpm xiaozhi-client@${XIAOZHI_VERSION} \
+    && npm install -g pnpm \
     && pnpm config set registry https://registry.npmmirror.com
 
 # 创建 Python 虚拟环境
@@ -44,7 +44,7 @@ RUN pip install --upgrade pip \
     && pip install uv
 
 # 复制 Python 依赖文件（如果存在）并安装依赖
-COPY requirements.txt* /tmp/
+COPY docker/templates/requirements.txt* /tmp/
 RUN if [ -f /tmp/requirements.txt ] && [ -s /tmp/requirements.txt ]; then \
         grep -v '^#' /tmp/requirements.txt | grep -v '^$' | head -1 > /dev/null && \
         pip install -r /tmp/requirements.txt; \
@@ -61,11 +61,32 @@ RUN npx --version && echo "✓ npx is available" \
 # 推荐挂载点: -v ~/xiaozhi-client:/workspaces
 WORKDIR /workspaces
 
+# 复制项目源码
+# 先复制 package.json 和 pnpm-lock.yaml 以利用 Docker 层缓存
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml tsconfig.json /tmp/xiaozhi-client/
+COPY packages/ /tmp/xiaozhi-client/packages/
+COPY apps/ /tmp/xiaozhi-client/apps/
+COPY config/ /tmp/xiaozhi-client/config/
+
 # 复制模板到备份目录（避免被卷挂载覆盖）
-COPY templates/ /templates-backup/
+COPY docker/templates/ /templates-backup/
 
 # 复制初始化脚本并设置权限
-COPY scripts/entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+COPY docker/scripts/entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+
+# 构建项目
+WORKDIR /tmp/xiaozhi-client
+RUN echo "Building in $(pwd)" && \
+    ls -la && \
+    echo "Node version: $(node --version)" && \
+    echo "PNPM version: $(pnpm --version)" && \
+    pnpm install --frozen-lockfile && \
+    echo "Dependencies installed successfully" && \
+    pnpm run build && \
+    echo "Build completed successfully" && \
+    npm install -g . && \
+    echo "Global installation completed" && \
+    pnpm config set registry https://registry.npmmirror.com
 
 # 安装模板项目的依赖到备份目录（用于初始化时复制）
 # 使用国内镜像源安装依赖
@@ -73,6 +94,9 @@ RUN cd /templates-backup && npm install --registry=https://registry.npmmirror.co
 
 # 设置脚本权限
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
+# 设置工作目录为运行时目录
+WORKDIR /workspaces
 
 
 # 暴露端口

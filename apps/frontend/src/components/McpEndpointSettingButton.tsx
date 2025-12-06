@@ -551,9 +551,7 @@ export function McpEndpointSettingButton() {
             <Button
               variant="outline"
               className="flex-1 flex items-center gap-2"
-              onClick={() =>
-                window.open(config?.xiaozhiServerUrl || "http://8.155.175.37:8002/#/home", "_blank")
-              }
+              onClick={() => window.open(config?.xiaozhiServerUrl, "_blank")}
               disabled={!config?.xiaozhiServerUrl}
             >
               <span className="text-sm sm:text-base">打开小智服务端</span>

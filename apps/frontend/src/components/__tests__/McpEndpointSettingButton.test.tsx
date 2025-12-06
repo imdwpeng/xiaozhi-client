@@ -45,6 +45,7 @@ describe("McpEndpointSettingButton", () => {
   const mockConfig: AppConfig = {
     mcpEndpoint: mockEndpoints,
     mcpServers: {},
+    xiaozhiServerUrl: "https://xiaozhi.me/console/agents",
   };
 
   beforeEach(() => {

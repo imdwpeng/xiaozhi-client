@@ -14,7 +14,7 @@ NC='\033[0m' # No Color
 
 # 配置
 CONTAINER_NAME="xiaozhi-client"
-IMAGE_NAME="imdwp/xiaozhi-client"
+IMAGE_NAME="ghcr.nju.edu.cn/imdwpeng/xiaozhi-client"
 IMAGE_TAG="latest"  # 默认版本，可通过参数覆盖
 WORKSPACE_DIR="$HOME/xiaozhi-client"
 WEB_PORT="9999"

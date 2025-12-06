@@ -207,45 +207,46 @@ export default function SettingsPage() {
                                       );
                                     }}
                                   >
-                            打开扣子平台
-                          </Button>
-                        </div>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="xiaozhiServerUrl"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>小智服务端链接</FormLabel>
-                        <div className="flex gap-2">
-                          <FormControl>
-                            <Input
-                              placeholder="小智服务端链接"
-                              className="font-mono text-sm"
-                              disabled={isLoading}
-                              autoComplete="off"
-                              {...field}
-                            />
-                          </FormControl>
-                          <Button
-                            variant="outline"
-                            onClick={() => {
-                              window.open(
-                                field.value || "https://www.example.com",
-                                "_blank"
-                              );
-                            }}
-                          >
-                            打开小智服务端
-                          </Button>
-                        </div>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                                    打开扣子平台
+                                  </Button>
+                                </div>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                          <FormField
+                            control={form.control}
+                            name="xiaozhiServerUrl"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>小智服务端链接</FormLabel>
+                                <div className="flex gap-2">
+                                  <FormControl>
+                                    <Input
+                                      placeholder="小智服务端链接"
+                                      className="font-mono text-sm"
+                                      disabled={isLoading}
+                                      autoComplete="off"
+                                      {...field}
+                                    />
+                                  </FormControl>
+                                  <Button
+                                    variant="outline"
+                                    onClick={() => {
+                                      window.open(
+                                        field.value ||
+                                          "https://www.example.com",
+                                        "_blank"
+                                      );
+                                    }}
+                                  >
+                                    打开小智服务端
+                                  </Button>
+                                </div>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
                           <FormField
                             control={form.control}
                             name="connection.heartbeatInterval"

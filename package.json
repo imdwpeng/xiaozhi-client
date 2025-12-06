@@ -4,9 +4,9 @@
   "description": "小智 AI 客户端 命令行工具",
   "repository": {
     "type": "git",
-    "url": "https://github.com/shenjingnan/xiaozhi-client.git"
+    "url": "https://github.com/imdwpeng/xiaozhi-client.git"
   },
-  "author": "shenjingnan <sjn.code@gmail.com>",
+  "author": "imdwpeng <sjn.code@gmail.com>",
   "license": "MIT",
   "keywords": [
     "xiaozhi",

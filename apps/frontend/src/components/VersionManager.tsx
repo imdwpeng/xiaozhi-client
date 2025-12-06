@@ -233,7 +233,7 @@ export function VersionManager() {
                     </Button>
                     <Button variant="outline" size="sm" asChild>
                       <a
-                        href="https://github.com/shenjingnan/xiaozhi-client/releases"
+                        href="https://github.com/imdwpeng/xiaozhi-client/releases"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-1"

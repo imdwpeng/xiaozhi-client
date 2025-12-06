@@ -76,7 +76,7 @@ xiaozhi start
 ##### 方式一：使用启动脚本（推荐）
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/shenjingnan/xiaozhi-client/main/docker/scripts/start.sh | bash
+curl -fsSL https://raw.githubusercontent.com/imdwpeng/xiaozhi-client/main/docker/scripts/start.sh | bash
 ```
 
 > 无法访问 `Github` 可以使用 `Gitee` 替代

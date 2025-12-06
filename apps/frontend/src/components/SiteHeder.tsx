@@ -24,7 +24,7 @@ export function SiteHeader({ title }: { title: string }) {
           <QQIcon size={24} className="text-slate-800" fill="currentColor" />
         </a>
         <a
-          href="https://github.com/shenjingnan/xiaozhi-client"
+          href="https://github.com/imdwpeng/xiaozhi-client"
           target="_blank"
           rel="noopener noreferrer"
         >
